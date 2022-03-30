@@ -1,0 +1,15 @@
+﻿using FomeBateuWebService.ViewModels;
+using System.ComponentModel;
+using Xamarin.Forms;
+
+namespace FomeBateuWebService.Views
+{
+    public partial class ItemDetailPage : ContentPage
+    {
+        public ItemDetailPage()
+        {
+            InitializeComponent();
+            BindingContext = new ItemDetailViewModel();
+        }
+    }
+}

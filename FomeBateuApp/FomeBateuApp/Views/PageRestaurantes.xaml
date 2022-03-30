@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FomeBateuApp.Views.PageRestaurantes">
+    <ContentPage.Content>
+        <StackLayout>            
+            <Label
+                x:Name="labelBoasVindas"
+                Text="{Binding BoasVindas}"               
+                FontSize="20"                
+                HorizontalOptions="Center" 
+                Margin="0,15"
+                TextColor="Red">
+            </Label>
+            <SearchBar 
+                x:Name="btBusca"
+                Grid.Row="3" 
+                Grid.Column="0" 
+                Grid.ColumnSpan="3" 
+                Placeholder="Procurar Restaurante/Comida"
+                BackgroundColor="Transparent" 
+                Margin="0,0,30,0"
+                Text="{Binding campoBusca}"                
+                />
+            <CollectionView 
+                x:Name="MyListView"
+                ItemsSource="{Binding ListaRestaurantes}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FomeBateuWebService.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout             
+            Padding="10,0,10,0" 
+            VerticalOptions="FillAndExpand"
+            BackgroundColor="Red"
+            HorizontalOptions="FillAndExpand">
+            <Image Source="monkey.jpg"
+                   VerticalOptions="Center"
+                   HorizontalOptions="End"
+                   />
+            <Label 
+                Text="Bateu a Fome!"
+                FontSize="30"                
+                HorizontalOptions="Center" 
+                Margin="0,15"
+                TextColor="Yellow">
+            </Label>
+            <Entry 
+                HorizontalOptions="FillAndExpand" 
+                Placeholder="Informe seu e-mail"
+                TextTransform="Lowercase"
+                Text="{Binding Email}"
+                TextColor="Black"
+                HorizontalTextAlignment="Center"
+                BackgroundColor="White"                 
+                
+            ></Entry> 
+            
+            <Entry 
+                IsPassword="True" 
+                HorizontalOptions="FillAndExpand" 
+                Placeholder= "Informe sua senha"
+                Text="{Binding Senha}"
+                TextColor="Black"
+                HorizontalTextAlignment="Center"
+                BackgroundColor="White"
+             ></Entry>
+            <Button 
+                VerticalOptions="Center" 
+                Text="Acessar" 
+                TextColor="Red"                
+                BackgroundColor="Yellow"
+                Command="{Binding LoginCommand}"     
+                FontSize="Large"
+                 />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
