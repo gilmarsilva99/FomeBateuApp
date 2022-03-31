@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using FomeBateuWebService.Dominio;
 
 namespace FomeBateuWebService.Dominio.Restaurantes.Dto
 {
@@ -18,7 +19,10 @@ namespace FomeBateuWebService.Dominio.Restaurantes.Dto
         public string NomeFantasia { get; set; }
         public string TempoEspera { get; set; }
         public string Frete { get; set; }
-        public string TempoFrete => $"{TempoEspera} - {Frete}";
-        public List<RestaurantesEndereco> Enderecos { get; set; }
+        public string TempoFrete => $"Tempo/Entrega: {TempoEspera} - {Frete}";
+        public List<RestaurantesEndereco> Enderecos { get; set; }    
+        
+        public List<Produtos.Mapeamento.Produtos> Produtos { get; set; }
+
     }
 }

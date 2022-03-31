@@ -14,11 +14,25 @@ namespace FomeBateuApp.Views
 	public partial class PageRestauranteProdutos : ContentPage
 	{
 		public RestauranteDto _Restaurante;
+		
 
-		public PageRestauranteProdutos (RestauranteDto restauranteDto)
+        public PageRestauranteProdutos (RestauranteDto restauranteDto)
 		{
 			InitializeComponent ();
 			_Restaurante = restauranteDto;
+			labelRestauranteNome.Text = _Restaurante.NomeFantasia;
+			//labelEnderecoRestaurante.Text = _Restaurante.Enderecos.FirstOrDefault().Endereco;
+			labelRestauranteFone.Text = $"Tel: {_Restaurante.Fone1}";
+			labelRestauranteFrete.Text = _Restaurante.TempoFrete;
 		}
-	}
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();            
+            
+            MyListView.ItemsSource = _Restaurante.Produtos;           
+                
+        }
+
+    }
 }

@@ -1,5 +1,5 @@
 ﻿using FomeBateuWebService.Dominio.Restaurantes.Dto;
-using FomeBateuWebService.Models;
+using FomeBateuWebService.Dominio.Restaurantes.Mapeamento;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +8,7 @@ namespace FomeBateuWebService.Dominio.Restaurantes.Adaptadores
 {
     public class RestauranteAdaptador
     {
-        public static List<RestauranteDto> ConverterMapParaDto(List<Models.Restaurantes> restauranteMaps)
+        public static List<RestauranteDto> ConverterMapParaDto(List<Restaurantes.Mapeamento.Restaurantes> restauranteMaps)
         {
             if (restauranteMaps == null)
             {
@@ -17,7 +17,7 @@ namespace FomeBateuWebService.Dominio.Restaurantes.Adaptadores
 
             List<RestauranteDto> restauranteDtos = new List<RestauranteDto>();
 
-            foreach (Models.Restaurantes restauranteMap in restauranteMaps)
+            foreach (Restaurantes.Mapeamento.Restaurantes restauranteMap in restauranteMaps)
             {
                 RestauranteDto restauranteDto = new RestauranteDto() 
                 {
@@ -33,6 +33,8 @@ namespace FomeBateuWebService.Dominio.Restaurantes.Adaptadores
                     NomeFantasia = restauranteMap.NomeFantasia,
                     Frete = restauranteMap.Frete,
                     TempoEspera = restauranteMap.TempoEspera,
+                    Produtos = restauranteMap.Produto
+                    
 
                 };
 
@@ -44,7 +46,7 @@ namespace FomeBateuWebService.Dominio.Restaurantes.Adaptadores
         }
 
 
-        public static RestauranteDto ConverterMapParaDto(Models.Restaurantes restauranteMap)
+        public static RestauranteDto ConverterMapParaDto(Restaurantes.Mapeamento.Restaurantes restauranteMap)
         {
             if (restauranteMap == null)
             {
@@ -61,7 +63,10 @@ namespace FomeBateuWebService.Dominio.Restaurantes.Adaptadores
                 InscricaoEstadual = restauranteMap.InscricaoEstadual,
                 Cnpj = restauranteMap.Cnpj,
                 Enderecos = restauranteMap.Enderecos,
-                NomeFantasia = restauranteMap.NomeFantasia                
+                NomeFantasia = restauranteMap.NomeFantasia,
+                Produtos = restauranteMap.Produto,
+                Frete = restauranteMap.Frete,
+                TempoEspera = restauranteMap.TempoEspera
 
             };
 

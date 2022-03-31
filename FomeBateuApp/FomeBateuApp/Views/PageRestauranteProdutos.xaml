@@ -4,9 +4,86 @@
              x:Class="FomeBateuApp.Views.PageRestauranteProdutos">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label
+                x:Name="labelRestauranteNome"
+                Text="{Binding NomeFantasia}"               
+                FontSize="35"                
+                HorizontalOptions="Start" 
+                Margin="0,15"
+                TextColor="Black"
+                FontAttributes="Bold">
+            </Label>
+            <Label 
+                x:Name="labelRestauranteFrete"               
+                Text="{Binding TempoFrete}"
+                FontSize="Medium"
+                TextColor="Red"
+                FontAttributes="None"
+                HorizontalTextAlignment="Start"
+            ></Label>
+            <Label
+                x:Name="labelRestauranteFone"
+                Text="{Binding Fone1}"               
+                FontSize="Small"                
+                HorizontalOptions="Start" 
+                Margin="0,15"
+                TextColor="Black">
+            </Label>            
+            <!--<Label
+                x:Name="labelEnderecoRestaurante"
+                Text="{Binding Endereco}"               
+                FontSize="Small"                
+                HorizontalOptions="Start" 
+                Margin="0,15"
+                TextColor="Black">
+            </Label>-->
+            <CollectionView 
+                x:Name="MyListView"                
+                ItemsSource="{Binding Produtos}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto">
+                                </RowDefinition>
+                                <RowDefinition Height="Auto">
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto">
+                                </ColumnDefinition>
+                                <ColumnDefinition Width="Auto">
+                                </ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label 
+                                Grid.Column="1"
+                                Text="{Binding Descricao}"
+                                FontSize="Large"
+                                TextColor="Black"
+                                FontAttributes="Bold"
+                            ></Label>
+                            <Label 
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{Binding ValorFormatado}"
+                                FontSize="Small"
+                                TextColor="Black"
+                                FontAttributes="None"
+                                HorizontalTextAlignment="Start"                                
+                            ></Label>
+                            <Label 
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Text="{Binding Observacao}"
+                                FontSize="Small"
+                                TextColor="Black"
+                                FontAttributes="None"
+                                HorizontalTextAlignment="Start"
+                            ></Label>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

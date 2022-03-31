@@ -1,4 +1,6 @@
-﻿using FomeBateuWebService.Infra.Persistencia.Mapeamento;
+﻿using FomeBateuWebService.Dominio.Produtos.Mapeamento;
+using FomeBateuWebService.Dominio.Restaurantes.Mapeamento;
+using FomeBateuWebService.Infra.Persistencia.Mapeamento;
 using FomeBateuWebService.Mapeamento;
 using FomeBateuWebService.Models;
 using System;

@@ -1,4 +1,5 @@
-﻿using FomeBateuWebService.Models;
+﻿using FomeBateuWebService.Dominio.Restaurantes.Mapeamento;
+using FomeBateuWebService.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;

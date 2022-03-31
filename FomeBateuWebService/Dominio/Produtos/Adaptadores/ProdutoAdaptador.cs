@@ -1,5 +1,5 @@
 ﻿using FomeBateuWebService.Dominio.Produtos.Dto;
-using FomeBateuWebService.Models;
+using FomeBateuWebService.Dominio.Produtos.Mapeamento;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +9,7 @@ namespace FomeBateuWebService.Dominio.Produtos.Adaptadores
     public class ProdutoAdaptador
     {
 
-        public static List<ProdutoDto> ConverterMapParaDto(List<Models.Produtos> produtoMaps) 
+        public static List<ProdutoDto> ConverterMapParaDto(List<Mapeamento.Produtos> produtoMaps) 
         {
             if (produtoMaps == null)
             {
@@ -18,7 +18,7 @@ namespace FomeBateuWebService.Dominio.Produtos.Adaptadores
 
             List<ProdutoDto> produtoDtos = new List<ProdutoDto>();
 
-            foreach (Models.Produtos produtoMap in produtoMaps) 
+            foreach (Mapeamento.Produtos produtoMap in produtoMaps) 
             {
                 ProdutoDto produtoDto = new ProdutoDto() 
                 {

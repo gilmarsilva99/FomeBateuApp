@@ -1,4 +1,5 @@
 ﻿using FomeBateuWebService.Data;
+using FomeBateuWebService.Dominio.Produtos.Mapeamento;
 using FomeBateuWebService.Models;
 using System;
 using System.Collections.Generic;

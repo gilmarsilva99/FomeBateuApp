@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using FomeBateuWebService.Dominio.Produtos.Mapeamento;
 
-namespace FomeBateuWebService.Models
+namespace FomeBateuWebService.Dominio.Restaurantes.Mapeamento
 {
     public class Restaurantes
     {      
@@ -21,7 +22,7 @@ namespace FomeBateuWebService.Models
         public string TempoEspera { get; set; }
         public string Frete { get; set; }
         public List<RestaurantesEndereco> Enderecos { get; set; }        
-        public List<Produtos> Produto { get; set; }
+        public List<Produtos.Mapeamento.Produtos> Produto { get; set; }
 
     }
 }

@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
-
-namespace FomeBateuWebService.Models
+namespace FomeBateuWebService.Dominio.Produtos.Mapeamento
 {
     public class Produtos
     {
@@ -12,6 +13,10 @@ namespace FomeBateuWebService.Models
         public decimal Valor { get; set; }
         public string Observacao { get; set; }
         public int RestauranteId { get; set; }
-        public Restaurantes Restaurante { get; set; }
+
+        public string ValorFormatado => String.Format(new CultureInfo("pt-BR"), "{0:C2}", Valor);
+
+        [JsonIgnore]
+        public Restaurantes.Mapeamento.Restaurantes Restaurante { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using FomeBateuWebService.Models;
+﻿using FomeBateuWebService.Dominio.Produtos.Mapeamento;
+using FomeBateuWebService.Models;
 using System.Collections.Generic;
 
 namespace FomeBateuWebService.Infra.Repositorio

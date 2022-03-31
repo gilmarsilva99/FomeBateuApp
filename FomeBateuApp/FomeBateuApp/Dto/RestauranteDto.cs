@@ -15,7 +15,8 @@ namespace FomeBateuApp.Dto
         public string NomeFantasia { get; set; }
         public string TempoEspera { get; set; }
         public string Frete { get; set; }
-        public string TempoFrete => $"{TempoEspera} - {Frete}";
+        public string TempoFrete => $"Tempo/Entrega: {TempoEspera} - {Frete}";
         public List<RestaurantesEndereco> Enderecos { get; set; }
+        public List<Produtos> Produtos { get; set; }
     }
 }
