@@ -12,9 +12,14 @@
             VerticalOptions="FillAndExpand"
             BackgroundColor="Red"
             HorizontalOptions="FillAndExpand">
-            <Image Source="monkey.jpg"
-                   VerticalOptions="Center"
-                   HorizontalOptions="End"
+            <Image 
+                   x:Name="imageLogin"
+                   Source="{Binding ImageUrl}"
+                   Aspect="AspectFill"
+                   HeightRequest="80"
+                   WidthRequest="100"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Center"
                    />
             <Label 
                 Text="Bateu a Fome!"
@@ -32,8 +37,7 @@
                 HorizontalTextAlignment="Center"
                 BackgroundColor="White"                 
                 
-            ></Entry> 
-            
+            ></Entry>             
             <Entry 
                 IsPassword="True" 
                 HorizontalOptions="FillAndExpand" 

@@ -7,8 +7,16 @@
             <Label
                 x:Name="labelBoasVindas"
                 Text="{Binding BoasVindas}"               
-                FontSize="20"                
+                FontSize="Medium"                
                 HorizontalOptions="Center" 
+                Margin="0,15"
+                TextColor="Red">
+            </Label>
+            <Label
+                x:Name="labelEnderecoUsuario"
+                Text="{Binding EnderecoUsuario}"               
+                FontSize="Small"                
+                HorizontalOptions="Start" 
                 Margin="0,15"
                 TextColor="Red">
             </Label>
@@ -24,10 +32,42 @@
                 />
             <CollectionView 
                 x:Name="MyListView"
-                ItemsSource="{Binding ListaRestaurantes}">
+                SelectionMode="Single"
+                SelectedItem="{Binding SelectedItem}"
+                ItemsSource="{Binding ListaRestaurantes}"
+                SelectionChangedCommand="{Binding ItemSelectedCommand}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        
+                        <Grid Padding="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto">                                    
+                                </RowDefinition>
+                                <RowDefinition Height="Auto">                                    
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto">                                    
+                                </ColumnDefinition>
+                                <ColumnDefinition Width="Auto">
+                                </ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label 
+                                Grid.Column="1"
+                                Text="{Binding NomeFantasia}"
+                                FontSize="Large"
+                                TextColor="Black"
+                                FontAttributes="Bold"
+                            ></Label>                            
+                                <Label 
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{Binding TempoFrete}"
+                                FontSize="Small"
+                                TextColor="Black"
+                                FontAttributes="None"
+                                HorizontalTextAlignment="Start"
+                            ></Label>
+                        </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

@@ -31,7 +31,15 @@ namespace FomeBateuWebService.Infra.Repositorio
 
         public List<Restaurantes> ObtertPorDescricao(string descricao) 
         {
-            return _contexto.ProdutoMaps.Include(o=>o.Restaurante).Where(a => a.Descricao.Contains(descricao) || a.Observacao.Contains(descricao)).Select(p=>p.Restaurante).Distinct().ToList();
+            descricao = descricao.ToLower();
+
+            List<Restaurantes> lista = _contexto.ProdutoMaps.Include(o => o.Restaurante)
+                .Where(a => a.Descricao.ToLower().Contains(descricao)
+                || a.Observacao.ToLower().Contains(descricao)).Select(p => p.Restaurante).Distinct().ToList();
+
+            lista.AddRange(_contexto.RestauranteMaps.Where(a=>a.NomeFantasia.ToLower().Contains(descricao)));
+
+            return lista.Distinct().ToList();
         }
     }
 }

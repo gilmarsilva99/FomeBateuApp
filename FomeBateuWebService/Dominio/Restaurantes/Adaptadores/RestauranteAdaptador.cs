@@ -30,7 +30,9 @@ namespace FomeBateuWebService.Dominio.Restaurantes.Adaptadores
                     InscricaoEstadual = restauranteMap.InscricaoEstadual,
                     Enderecos = restauranteMap.Enderecos,
                     Cnpj = restauranteMap.Cnpj,                    
-                    NomeFantasia = restauranteMap.NomeFantasia
+                    NomeFantasia = restauranteMap.NomeFantasia,
+                    Frete = restauranteMap.Frete,
+                    TempoEspera = restauranteMap.TempoEspera,
 
                 };
 

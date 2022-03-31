@@ -4,10 +4,11 @@ using FomeBateuWebService;
 using FomeBateuWebService.Dominio.Utilitarios.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,36 +17,74 @@ namespace FomeBateuApp.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class PageRestaurantes : ContentPage
 	{
-        public List<RestauranteDto> ListaRestaurantes; 
+        //public List<RestauranteDto> ListaRestaurantes;
+        public ObservableCollection<RestauranteDto> ListaRestaurantes { get; set; }
+        public List<RestauranteDto> ListaRestaurantesOriginal;
         public UsuarioDto _usuarioDto;
         public string BoasVindas;
         public string campoBusca { get; set; }
         public Command BuscaComando { get; }
 
+        public RestauranteDto SelectedItem { get; set; }
+
         public PageRestaurantes(UsuarioDto usuarioDto)
         {
             InitializeComponent();
+            BindingContext = this;
             _usuarioDto = usuarioDto;
-            ListaRestaurantes = new List<RestauranteDto>();
+            ListaRestaurantes = new ObservableCollection<RestauranteDto>();
+            ListaRestaurantesOriginal = new List<RestauranteDto>();
             BoasVindas = $"Olá, {_usuarioDto.NomeCompleto}!";
+            labelEnderecoUsuario.Text = _usuarioDto.Endereco.FirstOrDefault().Endereco;
             labelBoasVindas.Text = BoasVindas;
             btBusca.SearchButtonPressed += OnClickPesquisar;
+            btBusca.TextChanged += OnTextChangedPesquisar;
             //MyListView.ItemsSource = ListaRestaurantes;
         }
-        
-		protected override async void OnAppearing()
+
+        private void OnTextChangedPesquisar(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(e.NewTextValue))
+            {
+                ListaRestaurantes.Clear();
+                ListaRestaurantesOriginal.ForEach(ListaRestaurantes.Add);
+                //MyListView.ItemsSource = ListaRestaurantes;
+            }
+        }
+
+        public Command ItemSelectedCommand
+        {
+            get
+            {
+                return new Command (async _ =>
+                {
+                    if (SelectedItem == null)
+                        return;
+
+                    await Application.Current.MainPage.Navigation.PushModalAsync(new PageRestauranteProdutos(SelectedItem), true);
+
+                    SelectedItem = null;
+                });
+            }
+        }
+
+             
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
             Api api = new Api("restaurantes/listar/");
 
             var resposta = api.Get();
+           
 
             if (resposta.Codigo == Constantes.EnumWsCodigo.OK)
             {
-                ListaRestaurantes = JsonUtils.Deserializar<List<RestauranteDto>>(resposta.Conteudo);
+                ListaRestaurantes = JsonUtils.Deserializar<ObservableCollection<RestauranteDto>>(resposta.Conteudo);
 
                 MyListView.ItemsSource = ListaRestaurantes;
+                ListaRestaurantesOriginal.Clear();
+                ListaRestaurantesOriginal.AddRange(ListaRestaurantes);
                 //await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
 
                 //await Navigation.PushModalAsync(new Page);
@@ -59,11 +98,7 @@ namespace FomeBateuApp.Views
 
         private async void OnClickPesquisar(object sender, EventArgs e)
         {
-            List<WsParametro> lista = new List<WsParametro>();
-
-            List<ProdutoDto> produtoDtos = new List<ProdutoDto>();
-
-            List<RestauranteDto> restauranteDtos = new List<RestauranteDto>();
+            List<WsParametro> lista = new List<WsParametro>();         
 
             campoBusca = ((SearchBar)sender).Text.Trim();
 
@@ -82,14 +117,15 @@ namespace FomeBateuApp.Views
             Api api = new Api("restaurantes/obterpordescricaobusca");
             var respostaRestaurantes = api.Get(lista);
 
-            Api api2 = new Api("produtos/obterpordescricaobusca");
-            var respostaProdutos = api2.Get(lista);
+            
 
-            if (respostaRestaurantes.Codigo == Constantes.EnumWsCodigo.OK || (respostaProdutos.Codigo == Constantes.EnumWsCodigo.OK))
+            if (respostaRestaurantes.Codigo == Constantes.EnumWsCodigo.OK )
             {
-                produtoDtos = JsonUtils.Deserializar<List<ProdutoDto>>(respostaProdutos.Conteudo);
+                ListaRestaurantes.Clear();
 
-                restauranteDtos = JsonUtils.Deserializar<List<RestauranteDto>>(respostaRestaurantes.Conteudo);               
+                ListaRestaurantes = JsonUtils.Deserializar<ObservableCollection<RestauranteDto>>(respostaRestaurantes.Conteudo);
+                                
+                MyListView.ItemsSource = ListaRestaurantes;
 
                 //Carregar um listview p/ restaurante e um para produtos.
             }

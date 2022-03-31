@@ -16812,7 +16812,10 @@ namespace FomeBateuApp.Droid
 			public const int tooltip_frame_light = 2131165364;
 			
 			// aapt resource value: 0x7F0700B5
-			public const int xamarin_logo = 2131165365;
+			public const int undraw = 2131165365;
+			
+			// aapt resource value: 0x7F0700B6
+			public const int xamarin_logo = 2131165366;
 			
 			static Drawable()
 			{

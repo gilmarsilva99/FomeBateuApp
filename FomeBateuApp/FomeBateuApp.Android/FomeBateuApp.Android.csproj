@@ -101,5 +101,11 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\comida.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\undraw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Render\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

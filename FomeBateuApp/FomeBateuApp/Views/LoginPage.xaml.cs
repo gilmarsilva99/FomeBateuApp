@@ -12,9 +12,11 @@ namespace FomeBateuWebService.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        public string ImageUrl = "undraw.jpg";
         public LoginPage()
         {
             InitializeComponent();
+            imageLogin.Source = ImageUrl;
             this.BindingContext = new LoginViewModel();
         }
     }

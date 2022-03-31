@@ -34,6 +34,10 @@ namespace FomeBateuWebService.Infra.Persistencia.Mapeamento
                .HasColumnType("varchar");
             Property(p => p.Fone2)                
                 .HasColumnType("varchar");
+            Property(p => p.TempoEspera)
+                .HasColumnType("varchar");
+            Property(p => p.Frete)
+                .HasColumnType("varchar");
             Property(p => p.Cnpj)
                 .IsRequired()
                 .HasMaxLength(14)

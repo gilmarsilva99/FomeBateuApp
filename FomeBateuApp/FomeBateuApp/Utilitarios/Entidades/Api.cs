@@ -18,7 +18,7 @@ namespace FomeBateuApp.Utiliarios.Entidades
             EndPoint = ep;
         }
 
-        public static string CaminhoWebService = "http://192.168.1.165:80/";
+        public static string CaminhoWebService = "http://192.168.100.31:80/";
 
         public static string CaminhoApi = CaminhoWebService + "api/v1/";
         public WsResposta GetId(int id)

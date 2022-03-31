@@ -16,8 +16,11 @@ namespace FomeBateuWebService.ViewModels
         public string Email { get; set; }
         public string Senha { get; set; }
 
+        
+
         public LoginViewModel()
         {
+            
             LoginCommand = new Command(OnLoginClicked);           
         }
 

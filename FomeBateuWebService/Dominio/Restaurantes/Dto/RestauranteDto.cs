@@ -16,6 +16,9 @@ namespace FomeBateuWebService.Dominio.Restaurantes.Dto
         public string Cnpj { get;  set; }
         public string Email { get;  set; }        
         public string NomeFantasia { get; set; }
+        public string TempoEspera { get; set; }
+        public string Frete { get; set; }
+        public string TempoFrete => $"{TempoEspera} - {Frete}";
         public List<RestaurantesEndereco> Enderecos { get; set; }
     }
 }
